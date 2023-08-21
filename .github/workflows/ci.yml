@@ -22,8 +22,10 @@ jobs:
         distribution: 'temurin'
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
+    - name: Environment
+      run: ./gradlew buildEnvironment
     - name: Build
-      run: ./gradlew build --refresh-dependencies
+      run: ./gradlew build
     - name: Query
       run: ./gradlew startFuseki owlQuery stopFuseki
     - name: Upload
