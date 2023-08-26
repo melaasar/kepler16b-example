@@ -3,3 +3,4 @@ plantuml
 igraph
 cairocffi
 ipykernel
+nbconvert
