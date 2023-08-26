@@ -107,7 +107,7 @@ task generateDocs(type: io.opencaesar.owl.doc.OwlDocTask, dependsOn: owlReason) 
     // OWL Ontology Iris
     inputOntologyIris = [ "$rootIri/classes", "$rootIri/properties",  "$rootIri/individuals" ]
     // Output folder
-    outputFolderPath = file('build/doc')
+    outputFolderPath = file('build/web/doc')
     // Output case sensitivie path
     outputCaseSensitive = org.gradle.internal.os.OperatingSystem.current().isLinux()
 }
@@ -151,6 +151,7 @@ task owlLoad(type:io.opencaesar.owl.load.OwlLoadTask, group:"oml", dependsOn: ow
  * @seeAlso https://github.com/opencaesar/owl-tools/blob/master/owl-query/README.md
  */
 task owlQuery(type:io.opencaesar.owl.query.OwlQueryTask, group:"oml", dependsOn: owlLoad) {
+    inputs.files(owlLoad.inputs.files) // rerun when the dataset changes
     endpointURL = "http://localhost:3030/$dataset".toString()
     queryPath = file('src/sparql')
     resultPath = file('build/results')
