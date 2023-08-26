@@ -1,0 +1,5 @@
+pandas
+plantuml
+igraph
+cairocffi
+nbconvert
